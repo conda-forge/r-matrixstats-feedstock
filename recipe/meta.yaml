@@ -1,5 +1,4 @@
-{% set version = "0.53.1" %}
-
+{% set version = '0.54.0' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,33 +9,36 @@ package:
 source:
   fn: matrixStats_{{ version }}.tar.gz
   url:
-    - https://cran.r-project.org/src/contrib/matrixStats_{{ version }}.tar.gz
-    - https://cran.r-project.org/src/contrib/Archive/matrixStats/matrixStats_{{ version }}.tar.gz
-  sha256: df70bc9fb64716a7a633b5d0c2a2422b2c8d93ac5e64574528a325505df9712e
+    - {{ cran_mirror }}/src/contrib/matrixStats_{{ version }}.tar.gz
+    - {{ cran_mirror }}/src/contrib/Archive/matrixStats/matrixStats_{{ version }}.tar.gz
+  sha256: 8f0db4e181300a208b9aedbebfdf522a2626e6675d2662656efb8ba71b05a06f
 
 build:
   merge_build_host: True  # [win]
-  number: 1
+  number: 0
   skip: true  # [win32]
-
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - posix                # [win]
-    - {{ compiler('c') }}        # [unix]
-    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('c') }}        # [not win]
+    - {{native}}toolchain        # [win]
+    - {{posix}}filesystem        # [win]
+    - {{posix}}make
+    - {{posix}}sed               # [win]
+    - {{posix}}coreutils         # [win]
+    - {{posix}}zip               # [win]
   host:
     - r-base
-
   run:
     - r-base
+    - {{native}}gcc-libs         # [win]
 
 test:
   commands:
-    - $R -e "library('matrixStats')"  # [not win]
+    - $R -e "library('matrixStats')"           # [not win]
     - "\"%R%\" -e \"library('matrixStats')\""  # [win]
 
 about:
@@ -52,3 +54,7 @@ extra:
   recipe-maintainers:
     - johanneskoester
     - bgruening
+    - daler
+    - jdblischak
+    - cbrueffer
+    - dbast
