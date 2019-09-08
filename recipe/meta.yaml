@@ -1,4 +1,4 @@
-{% set version = '0.54.0' %}
+{% set version = '0.55.0' %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -7,23 +7,21 @@ package:
   version: {{ version|replace("-", "_") }}
 
 source:
-  fn: matrixStats_{{ version }}.tar.gz
   url:
     - {{ cran_mirror }}/src/contrib/matrixStats_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/matrixStats/matrixStats_{{ version }}.tar.gz
-  sha256: 8f0db4e181300a208b9aedbebfdf522a2626e6675d2662656efb8ba71b05a06f
+  sha256: 16d6bd90eee4cee8df4c15687de0f9b72730c03e56603c2998007d4533e8db19
 
 build:
   merge_build_host: True  # [win]
-  number: 1001
-  skip: true  # [win32]
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
 
 requirements:
   build:
-    - {{ compiler('c') }}        # [not win]
+    - {{ compiler('c') }}              # [not win]
     - {{ compiler('m2w64_c') }}        # [win]
     - {{posix}}filesystem        # [win]
     - {{posix}}make
@@ -49,13 +47,30 @@ about:
     subsetted calculations such that both memory usage and processing time is minimized.  There
     are also optimized vector-based methods, e.g. binMeans(), madDiff() and weightedMedian().
   license_family: OTHER
+  license_file:
+    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/Artistic-2.0'
 
 extra:
   recipe-maintainers:
     - conda-forge/r
-    - johanneskoester
-    - bgruening
-    - daler
-    - jdblischak
-    - cbrueffer
-    - dbast
+
+# Package: matrixStats
+# Version: 0.55.0
+# Depends: R (>= 2.12.0)
+# Suggests: base64enc, ggplot2, knitr, microbenchmark, R.devices, R.rsp
+# VignetteBuilder: R.rsp
+# Title: Functions that Apply to Rows and Columns of Matrices (and to Vectors)
+# Authors@R: c( person("Henrik", "Bengtsson", role=c("aut", "cre", "cph"), email="henrikb@braju.com"), person("Hector", "Corrada Bravo", role="ctb"), person("Robert", "Gentleman", role="ctb"), person("Ola", "Hossjer", role="ctb"), person("Harris", "Jaffee", role="ctb"), person("Dongcan", "Jiang", role="ctb"), person("Peter", "Langfelder", role="ctb"), person("Peter", "Hickey", role="ctb"), person("Brian", "Montgomery", role="ctb"))
+# Author: Henrik Bengtsson [aut, cre, cph], Hector Corrada Bravo [ctb], Robert Gentleman [ctb], Ola Hossjer [ctb], Harris Jaffee [ctb], Dongcan Jiang [ctb], Peter Langfelder [ctb], Peter Hickey [ctb], Brian Montgomery [ctb]
+# Maintainer: Henrik Bengtsson <henrikb@braju.com>
+# Description: High-performing functions operating on rows and columns of matrices, e.g. col / rowMedians(), col / rowRanks(), and col / rowSds().  Functions optimized per data type and for subsetted calculations such that both memory usage and processing time is minimized.  There are also optimized vector-based methods, e.g. binMeans(), madDiff() and weightedMedian().
+# License: Artistic-2.0
+# LazyLoad: TRUE
+# NeedsCompilation: yes
+# ByteCompile: TRUE
+# URL: https://github.com/HenrikBengtsson/matrixStats
+# BugReports: https://github.com/HenrikBengtsson/matrixStats/issues
+# RoxygenNote: 6.1.1
+# Packaged: 2019-09-06 06:24:24 UTC; hb
+# Repository: CRAN
+# Date/Publication: 2019-09-07 16:50:15 UTC
