@@ -1,4 +1,4 @@
-{% set version = '0.55.0' %}
+{% set version = "0.56.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,10 +10,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/matrixStats_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/matrixStats/matrixStats_{{ version }}.tar.gz
-  sha256: 16d6bd90eee4cee8df4c15687de0f9b72730c03e56603c2998007d4533e8db19
+  sha256: 39e34a3dc480b9df05bb1a555eaef1dc1971a53f3ea6e01eb3a68bd1d3760f27
 
 build:
-  merge_build_host: True  # [win]
+  merge_build_host: true  # [win]
   number: 0
   rpaths:
     - lib/R/lib/
@@ -42,13 +42,12 @@ test:
 about:
   home: https://github.com/HenrikBengtsson/matrixStats
   license: Artistic-2.0
-  summary: High-performing functions operating on rows and columns of matrices, e.g. col / rowMedians(),
-    col / rowRanks(), and col / rowSds().  Functions optimized per data type and for
-    subsetted calculations such that both memory usage and processing time is minimized.  There
-    are also optimized vector-based methods, e.g. binMeans(), madDiff() and weightedMedian().
+  summary: High-performing functions operating on rows and columns of matrices, e.g. col / rowMedians(), col / rowRanks(), and col / rowSds().  Functions optimized
+    per data type and for subsetted calculations such that both memory usage and processing time is minimized.  There are also optimized vector-based methods, e.g.
+    binMeans(), madDiff() and weightedMedian().
   license_family: OTHER
   license_file:
-    - '{{ environ["PREFIX"] }}/lib/R/share/licenses/Artistic-2.0'
+    - {{ environ["PREFIX"] }}/lib/R/share/licenses/Artistic-2.0
 
 extra:
   recipe-maintainers:
