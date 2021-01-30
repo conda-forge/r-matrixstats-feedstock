@@ -1,4 +1,4 @@
-{% set version = "0.57.0" %}
+{% set version = "0.58.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,7 +10,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/matrixStats_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/matrixStats/matrixStats_{{ version }}.tar.gz
-  sha256: f9681887cd3b121762c83f55f189cae26cb8443efce91fcd212ac714fde9f343
+  sha256: 8367b4b98cd24b6e40022cb2b11e907aa0bcf5ee5b2f89fefb186f53661f4b49
 
 build:
   merge_build_host: true  # [win]
