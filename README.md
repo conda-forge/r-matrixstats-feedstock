@@ -3,6 +3,7 @@ About r-matrixstats-feedstock
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/r-matrixstats-feedstock/blob/main/LICENSE.txt)
 
+
 About r-matrixstats
 -------------------
 
@@ -11,6 +12,7 @@ Home: https://github.com/HenrikBengtsson/matrixStats
 Package license: Artistic-2.0
 
 Summary: High-performing functions operating on rows and columns of matrices, e.g. col / rowMedians(), col / rowRanks(), and col / rowSds().  Functions optimized per data type and for subsetted calculations such that both memory usage and processing time is minimized.  There are also optimized vector-based methods, e.g. binMeans(), madDiff() and weightedMedian().
+
 About r-matrixstats
 -------------------
 

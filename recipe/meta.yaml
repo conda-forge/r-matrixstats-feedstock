@@ -1,4 +1,4 @@
-{% set version = "1.0.0" %}
+{% set version = "1.1.0" %}
 {% set posix = 'm2-' if win else '' %}
 {% set native = 'm2w64-' if win else '' %}
 
@@ -10,11 +10,11 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/matrixStats_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/matrixStats/matrixStats_{{ version }}.tar.gz
-  sha256: 94876850e60ed16b50bf303cdfe4dd747ad2c28cae07bdc471a093eac23bad6f
+  sha256: b4671875d80903aabbb8d6a7750f93886eb1a67703c9263d1c1ab1aab7840541
 
 build:
   merge_build_host: true  # [win]
-  number: 1
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
